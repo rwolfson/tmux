@@ -1010,7 +1010,7 @@ grid_reflow_join(struct grid *target, struct grid *gd, u_int sx, u_int yy,
 		 * If this is now the last line, there is nothing more to be
 		 * done.
 		 */
-		if (yy + lines == gd->hsize + gd->sy)
+		if (yy + 1 + lines == gd->hsize + gd->sy)
 			break;
 		line = yy + 1 + lines;
 
@@ -1020,6 +1020,7 @@ grid_reflow_join(struct grid *target, struct grid *gd, u_int sx, u_int yy,
 		if (gd->linedata[line].cellused == 0) {
 			if (!wrapped)
 				break;
+			lines++;
 			continue;
 		}
 
